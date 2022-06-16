@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+
+//components
+import Toggle from './src/components/Toggle';
+
+//axios
+import axios from 'axios';
 
 export default function App() {
+  const [toggle, setToggle] = useState(false)
+  const [ip, setIP] = useState('');
+
+  //creating function to load ip address from the API
+  const getData = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    setIP(res.data.IPv4)
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={toggle ? styles.containerLight : styles.containerDark} >
+      <Toggle toggle={toggle} setToggle={setToggle} ip={ip} getData={() => getData()} />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  containerDark: {
+    flex: 1,
+    backgroundColor: '#222',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerLight: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
