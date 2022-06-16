@@ -10,6 +10,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/voice": "^1.1.9",
+    "@react-native-voice/voice": "^3.2.4",
     "axios": "^0.27.2",
     "expo": "~45.0.0",
     "expo-speech": "~10.2.0",

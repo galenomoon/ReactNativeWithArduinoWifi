@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 //lib
 import * as Speech from 'expo-speech';
+// import Voice from '@react-native-voice/voice';
 
 export default function VoiceCommand() {
   const [isListening, setIsListening] = useState(false);
