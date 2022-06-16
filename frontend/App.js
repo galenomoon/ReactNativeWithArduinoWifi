@@ -1,10 +1,10 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 
-//components
+//pages
 import Toggle from './src/pages/Toggle';
-import VoiceCommand from './src/pages/VoiceCommand';
-import { StatusBar } from 'expo-status-bar';
+// import VoiceCommand from './src/pages/VoiceCommand';
 
 export default function App() {
   const [toggle, setToggle] = useState(false)
@@ -13,7 +13,6 @@ export default function App() {
     <SafeAreaView style={toggle ? styles.containerLight : styles.containerDark} >
       <StatusBar style={!toggle ? 'light' : 'dark'} />
       <Toggle toggle={toggle} setToggle={setToggle} />
-      <VoiceCommand />
     </SafeAreaView>
   );
 }
