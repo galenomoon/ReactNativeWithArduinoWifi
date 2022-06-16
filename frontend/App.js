@@ -2,24 +2,18 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 
 //components
-import Toggle from './src/components/Toggle';
-
-//axios
-import axios from 'axios';
+import Toggle from './src/pages/Toggle';
+import VoiceCommand from './src/pages/VoiceCommand';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [toggle, setToggle] = useState(false)
-  const [ip, setIP] = useState('');
-
-  //creating function to load ip address from the API
-  const getData = async () => {
-    const res = await axios.get('https://geolocation-db.com/json/')
-    setIP(res.data.IPv4)
-  }
 
   return (
     <SafeAreaView style={toggle ? styles.containerLight : styles.containerDark} >
-      <Toggle toggle={toggle} setToggle={setToggle} ip={ip} getData={() => getData()} />
+      <StatusBar style={!toggle ? 'light' : 'dark'} />
+      <Toggle toggle={toggle} setToggle={setToggle} />
+      <VoiceCommand />
     </SafeAreaView>
   );
 }

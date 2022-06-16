@@ -4,12 +4,10 @@ import React, { useEffect } from 'react';
 //api
 import api from '../../services/api';
 
-export default function Toggle({ toggle, setToggle, ip, getData }) {
+export default function Toggle({ toggle, setToggle }) {
 
   useEffect(() => {
     toggle ? api.get('/on') : api.get('/off');
-    getData();
-
   }, [toggle]);
 
   return (
@@ -23,7 +21,6 @@ export default function Toggle({ toggle, setToggle, ip, getData }) {
         onValueChange={() => setToggle(!toggle)}
       />
       <Text style={toggle ? styles.textLight : styles.textDark}>
-        {ip}
       </Text>
     </SafeAreaView>
   );
